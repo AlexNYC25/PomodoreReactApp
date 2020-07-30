@@ -12,10 +12,13 @@ function PomodoreTimer(){
                 if(timeLeft === 1){
                     setTimersDone(previousTimersDone => previousTimersDone + 1)
 
-                    
+
                 }
             }, 1000);
 
+            if(timersDone % 5 === 0){
+                console.log("Time to take a break");
+            }
         
             
         }
