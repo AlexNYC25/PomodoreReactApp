@@ -2,45 +2,58 @@ import React, {useState, useEffect} from 'react'
 
 function PomodoreTimer(){
 
-    const [timeLeft, setTimeLeft] = useState(0);
-    const [timersDone, setTimersDone] = useState(0);
+    const [secLeft, setSecLeft] = useState(90);
+    const [isActive, setIsActive] = useState(false);
 
-    useEffect(()=>{
-        if(timeLeft > 0){
-            setTimeout(()=>{
-                setTimeLeft(previousTime => previousTime - 1);
-                if(timeLeft === 1){
-                    setTimersDone(previousTimersDone => previousTimersDone + 1)
+    function toggle() {
+        setIsActive(!isActive);
 
-
-                }
-            }, 1000);
-
-            if(timersDone % 5 === 0){
-                console.log("Time to take a break");
-            }
-        
-            
+        if(isActive){
+            setSecLeft(90);
         }
-        
-    })
+      }
+    
+    function reset() {
+
+        setSecLeft(0);
+        setIsActive(false);
+    }
+
+    useEffect(() => {
+        // create interval
+        let interval = null;
+        // if timer is active
+        if (isActive) {
+            // increment the 
+          interval = setInterval(() => {
+            setSecLeft(seconds => seconds - 1);
+          }, 1000);
+        } else if (!isActive && secLeft !== 0) {
+          clearInterval(interval);
+        }
+        return () => clearInterval(interval);
+      }, [isActive, secLeft]);
+
+
+
 
     return (
         <div>
             <div className="timer">
                 <div>
-                    <p>{timeLeft}</p>
+                    <p> {secLeft} </p>
                 </div>
 
                 <div>
-                    <button onClick={()=>setTimeLeft(6*1)} >
-                        Start a new Timer
+                    <button  onClick={toggle}>
+                        {isActive ? 'Pause' : 'Start'}
+                    
                     </button>
                 </div>
             </div>
             <div>
                 <div id="past-timers">
-                    <p>{timersDone}</p>
+                    <p></p>
                 </div>
             </div>
         </div>
