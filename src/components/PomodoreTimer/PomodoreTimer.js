@@ -5,6 +5,10 @@ function PomodoreTimer(){
     const [secLeft, setSecLeft] = useState(90);
     const [isActive, setIsActive] = useState(false);
 
+    const [timeDisplay, setTimeDisplay] = useState("");
+
+
+
     function toggle() {
         setIsActive(!isActive);
 
@@ -25,13 +29,27 @@ function PomodoreTimer(){
         // if timer is active
         if (isActive) {
             // increment the 
-          interval = setInterval(() => {
+            interval = setInterval(() => {
             setSecLeft(seconds => seconds - 1);
-          }, 1000);
+        }, 1000);
+
+        let min = Math.floor(secLeft/ 60);
+        let sec = secLeft - (min * 60);
+
+        let tempTimeForm = "";
+        tempTimeForm += "" + min + ":" + (sec < 10 ? "0" : "");
+        tempTimeForm += "" + sec;
+
+        setTimeDisplay(tempTimeForm);
+
+        if(secLeft === 0){
+            clearInterval(interval);
+        }
         } else if (!isActive && secLeft !== 0) {
-          clearInterval(interval);
+            clearInterval(interval);
         }
         return () => clearInterval(interval);
+
       }, [isActive, secLeft]);
 
 
@@ -41,7 +59,7 @@ function PomodoreTimer(){
         <div>
             <div className="timer">
                 <div>
-                    <p> {secLeft} </p>
+                    <p> {timeDisplay} </p>
                 </div>
 
                 <div>
