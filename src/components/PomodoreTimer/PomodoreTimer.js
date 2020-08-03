@@ -8,6 +8,7 @@ function PomodoreTimer(){
     const [secLeft, setSecLeft] = useState(90);
     const [isActive, setIsActive] = useState(false);
     const [timeDisplay, setTimeDisplay] = useState(startingTimeStr);
+    const [finishedTimers, setFinishedTimers] = useState(0);
 
     function toggle() {
         setIsActive(!isActive);
@@ -62,6 +63,7 @@ function PomodoreTimer(){
 
         if(secLeft === 0){
             clearInterval(interval);
+            setFinishedTimers(past => past + 1);
         }
         } else if (!isActive && secLeft !== 0) {
             clearInterval(interval);
@@ -92,8 +94,8 @@ function PomodoreTimer(){
                 </div>
             </div>
             <div>
-                <div id="past-timers">
-                    <p></p>
+                <div id="finished-timers">
+                    <p>{finishedTimers}</p>
                 </div>
             </div>
         </div>
