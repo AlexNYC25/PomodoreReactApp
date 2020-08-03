@@ -2,26 +2,44 @@ import React, {useState, useEffect} from 'react'
 
 function PomodoreTimer(){
 
+    let startingTimeStr = "1:30";
+    let startingTimeSeconds = 90;
+
     const [secLeft, setSecLeft] = useState(90);
     const [isActive, setIsActive] = useState(false);
-
-    const [timeDisplay, setTimeDisplay] = useState("");
-
-
+    const [timeDisplay, setTimeDisplay] = useState(startingTimeStr);
 
     function toggle() {
         setIsActive(!isActive);
 
         if(isActive){
-            setSecLeft(90);
+            //setSecLeft(90);
         }
       }
     
     function reset() {
 
-        setSecLeft(0);
+        // reset seconds counter
+        setSecLeft(startingTimeSeconds);
+        // set timer active bool to false
         setIsActive(false);
+        // reset display to standard time
+        setTimeDisplay(startingTimeStr);
     }
+
+    /*
+    useEffect(() => {
+        let min = Math.floor(secLeft/ 60);
+        let sec = secLeft - (min * 60);
+
+        let tempTimeForm = "";
+        tempTimeForm += "" + min + ":" + (sec < 10 ? "0" : "");
+        tempTimeForm += "" + sec;
+
+        setTimeDisplay(tempTimeForm);
+
+    }, [])
+    */
 
     useEffect(() => {
         // create interval
@@ -66,6 +84,10 @@ function PomodoreTimer(){
                     <button  onClick={toggle}>
                         {isActive ? 'Pause' : 'Start'}
                     
+                    </button>
+
+                    <button onClick={reset}>
+                        Reset
                     </button>
                 </div>
             </div>
