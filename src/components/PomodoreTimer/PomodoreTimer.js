@@ -10,6 +10,8 @@ function PomodoreTimer(){
     const [timeDisplay, setTimeDisplay] = useState(startingTimeStr);
     const [finishedTimers, setFinishedTimers] = useState(0);
 
+    const [gifActive, setGifActive] = useState(false);
+
     function toggle() {
         setIsActive(!isActive);
 
@@ -26,6 +28,10 @@ function PomodoreTimer(){
         setIsActive(false);
         // reset display to standard time
         setTimeDisplay(startingTimeStr);
+    }
+
+    function backToWork() {
+        setGifActive(false);
     }
 
     /*
@@ -64,6 +70,7 @@ function PomodoreTimer(){
         if(secLeft === 0){
             clearInterval(interval);
             setFinishedTimers(past => past + 1);
+            setGifActive(true)
         }
         } else if (!isActive && secLeft !== 0) {
             clearInterval(interval);
@@ -97,6 +104,13 @@ function PomodoreTimer(){
                 <div id="finished-timers">
                     <p>{finishedTimers}</p>
                 </div>
+            </div>
+
+            <div className={gifActive ? "gifItem" : "hiddenItem" }>
+                <p>Test Text</p>
+                <button onClick={backToWork}>
+                    Let's get back to work
+                </button>
             </div>
         </div>
     );
