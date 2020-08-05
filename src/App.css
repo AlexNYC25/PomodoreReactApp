@@ -36,3 +36,15 @@
     transform: rotate(360deg);
   }
 }
+
+
+.hiddenItem{
+  display: none;
+}
+
+.gifItem{
+  display: block;
+  border-color: black;
+  border-style: solid;
+  border-radius: 3px;
+}
