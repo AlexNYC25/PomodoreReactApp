@@ -83,30 +83,33 @@ function PomodoreTimer(){
 
 
     return (
-        <div>
+        <div className="container">
+            
             <div className="timer">
-                <div>
-                    <p> {timeDisplay} </p>
+                <div className="row">
+                    <p id="clock-display" className="col h1"> {timeDisplay} </p>
                 </div>
 
-                <div>
-                    <button  onClick={toggle}>
+                <div className="row justify-content-center">
+                    <button onClick={toggle} className="col-3">
                         {isActive ? 'Pause' : 'Start'}
                     
                     </button>
 
-                    <button onClick={reset}>
+                    <button onClick={reset} className="col-3">
                         Reset
                     </button>
                 </div>
-            </div>
-            <div>
-                <div id="finished-timers">
-                    <p>{finishedTimers}</p>
+
+                <div className="row">
+                    <div id="finished-timers" className="col">
+                        <p>{finishedTimers}</p>
+                    </div>
                 </div>
             </div>
+            
 
-            <div className={gifActive ? "gifItem" : "hiddenItem" }>
+            <div className={gifActive ? "container gifItem" : "container hiddenItem" }>
                 <p>Test Text</p>
                 <button onClick={backToWork}>
                     Let's get back to work
