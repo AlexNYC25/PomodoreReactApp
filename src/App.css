@@ -38,6 +38,11 @@
 }
 
 
+#clock-display{
+  font-family: 'Source Code Pro', monospace;
+
+}
+
 .hiddenItem{
   display: none;
 }
