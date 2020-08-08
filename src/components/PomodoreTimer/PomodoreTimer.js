@@ -83,7 +83,9 @@ function PomodoreTimer(){
 
 
     return (
-        <div className="container">
+        
+        <div id="pomodore-timer" className="container align-items-center">
+            
             
             <div className="timer">
                 <div className="row">
@@ -91,12 +93,12 @@ function PomodoreTimer(){
                 </div>
 
                 <div className="row justify-content-center">
-                    <button onClick={toggle} className="col-3">
+                    <button onClick={toggle} className="col-3 clock-button">
                         {isActive ? 'Pause' : 'Start'}
                     
                     </button>
 
-                    <button onClick={reset} className="col-3">
+                    <button onClick={reset} className="col-3 clock-button">
                         Reset
                     </button>
                 </div>
