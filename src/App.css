@@ -38,9 +38,25 @@
 }
 
 
+
+body{
+  background: rgb(241,130,141);
+  background: linear-gradient(90deg, rgba(241,130,141,1) 0%, rgba(210,77,87,1) 50%, rgba(241,130,141,1) 100%);
+}
+
+#pomodore-timer{
+  margin-top: 20%;
+}
+
 #clock-display{
   font-family: 'Source Code Pro', monospace;
 
+}
+
+.clock-button{
+  background-color: #f1a9a0;
+  border-radius: 5rem;
+  border-color: black;
 }
 
 .hiddenItem{
@@ -53,3 +69,4 @@
   border-style: solid;
   border-radius: 3px;
 }
+
