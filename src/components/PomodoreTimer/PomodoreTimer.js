@@ -77,7 +77,7 @@ function PomodoreTimer(){
         }
         return () => clearInterval(interval);
 
-      }, [isActive, secLeft]);
+    }, [isActive, secLeft]);
 
 
 
@@ -113,6 +113,8 @@ function PomodoreTimer(){
 
             <div className={gifActive ? "container gifItem" : "container hiddenItem" }>
                 <p>Test Text</p>
+                <img src="https://media1.giphy.com/media/g9582DNuQppxC/giphy.gif?cid=8eb4f665vxc8up6kq78fm8qjjw3cwv1spto4dol6fu79635t&rid=giphy.gif">
+                </img>
                 <button onClick={backToWork}>
                     Let's get back to work
                 </button>
